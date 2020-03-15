@@ -11,7 +11,7 @@
 
 VPG is a small Application Programming Interface (API) and Command-Line
 Interface (CLI) to generate one or more passwords of a fixed length in
-an opinionated but versatile way by flexibly chosing the character sets
+an opinionated but versatile way by flexibly choosing the character sets
 from which the characters have to be picked.
 This is the documentation of the API `vpg`(3).
 
