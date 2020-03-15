@@ -61,7 +61,7 @@ package-alpine:
 	        echo 'Set disable_coredump false' >>/etc/sudo.conf && \
 	        cd $$PWD && \
 	        sudo -u $(USR) -g $(GRP) npx pkg -t $(VERSION_PKG_ALPINE) ." && \
-	tar -c -f- vpg vpg.8 | xz -9 >vpg-linux-alpine-x64.tar.xz && rm -f vpg
+	tar -c -f- vpg vpg.1 vpg.3 | xz -9 >vpg-linux-alpine-x64.tar.xz && rm -f vpg
 
 package-debian:
 	@echo "(executing under Debian GNU/Linux)" && \
@@ -72,5 +72,5 @@ package-debian:
             useradd -M -d $$HOME -s /bin/bash -u $(UID) -g $(GID) -G root $(USR) && \
 	        cd $$PWD && \
 	        sudo -u $(USR) -g $(GRP) npx pkg -t $(VERSION_PKG_DEBIAN) ." && \
-	tar -c -f- vpg vpg.8 | xz -9 >vpg-linux-debian-x64.tar.xz && rm -f vpg
+	tar -c -f- vpg vpg.1 vpg.3 | xz -9 >vpg-linux-debian-x64.tar.xz && rm -f vpg
 
