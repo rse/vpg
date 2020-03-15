@@ -1,0 +1,57 @@
+{
+    "name":        "vpg",
+    "homepage":    "http://github.com/rse/vpg",
+    "description": "Versatile Password Generator",
+    "version":     "0.9.0",
+    "license":     "MIT",
+    "author": {
+        "name":    "Dr. Ralf S. Engelschall",
+        "email":   "rse@engelschall.com",
+        "url":     "http://engelschall.com"
+    },
+    "keywords": [
+        "password", "generator"
+    ],
+    "repository": {
+        "type": "git",
+        "url":  "git://github.com/rse/vpg.git"
+    },
+    "bugs": {
+        "url":  "http://github.com/rse/vpg/issues"
+    },
+    "main":     "./vpg-api.js",
+    "bin":      { "vpg": "./vpg-cli.js" },
+    "devDependencies": {
+        "babel-eslint":           "10.1.0",
+        "eslint":                 "6.8.0",
+        "eslint-config-standard": "14.1.0",
+        "eslint-plugin-standard": "4.0.1",
+        "eslint-plugin-promise":  "4.2.1",
+        "eslint-plugin-import":   "2.20.1",
+        "eslint-plugin-node":     "11.0.0",
+        "npm-run-all":            "4.1.5",
+        "pkg":                    "4.4.4",
+        "remark-cli":             "7.0.1",
+        "remark":                 "11.0.2",
+        "remark-man":             "6.0.0"
+    },
+    "dependencies" : {
+        "yargs":                  "15.3.0",
+        "deepmerge":              "4.2.2",
+        "secure-random":          "1.1.2"
+    },
+    "engines": {
+        "node":                   ">=10.0.0"
+    },
+    "scripts": {
+        "prepublishOnly":         "npm-run-all -s lint",
+        "build":                  "npm-run-all -s lint generate:man1 generate:man3 package",
+        "clean":                  "npm-run-all -s package:clean generate:clean",
+        "lint":                   "eslint --config eslint.yaml vpg-api.js vpg-cli.js",
+        "package":                "make package",
+        "package:clean":          "rm -f vpg-linux-debian-x64.tar.xz vpg-linux-alpine-x64.tar.xz",
+        "generate:man1":          "remark --quiet --use remark-man --output vpg.1 vpg-cli.md",
+        "generate:man3":          "remark --quiet --use remark-man --output vpg.3 vpg-api.md",
+        "generate:clean":         "rm -f vpg.8"
+    }
+}
