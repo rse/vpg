@@ -28,7 +28,9 @@ $ npm install -g vpg
 Usage
 -----
 
-The [Unix manual page](https://github.com/rse/vpg/blob/master/vpg.md) contains
+The Unix manual pages for the
+[API](https://github.com/rse/vpg/blob/master/vpg-api.md) and the
+[CLI](https://github.com/rse/vpg/blob/master/vpg-cli.md) contain
 detailed usage information.
 
 Examples
