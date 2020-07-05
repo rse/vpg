@@ -52,6 +52,6 @@
         "package:clean":          "rm -f vpg-linux-debian-x64.tar.xz vpg-linux-alpine-x64.tar.xz",
         "generate:man1":          "remark --quiet --use remark-man --output vpg.1 vpg-cli.md",
         "generate:man3":          "remark --quiet --use remark-man --output vpg.3 vpg-api.md",
-        "generate:clean":         "rm -f vpg.8"
+        "generate:clean":         "rm -f vpg.3 vpg.8"
     }
 }
