@@ -38,7 +38,7 @@ clean: bootstrap
 
 distclean: bootstrap
 
-VERSION_NODE        = 12
+VERSION_NODE        = 14
 VERSION_NODE_ALPINE = $(VERSION_NODE)-alpine
 VERSION_NODE_DEBIAN = $(VERSION_NODE)-buster
 VERSION_PKG_ALPINE  = node$(VERSION_NODE)-alpine-x64
