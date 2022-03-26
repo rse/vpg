@@ -22,25 +22,24 @@
     "main":     "./vpg-api.js",
     "bin":      { "vpg": "./vpg-cli.js" },
     "devDependencies": {
-        "babel-eslint":           "10.1.0",
-        "eslint":                 "7.17.0",
-        "eslint-config-standard": "16.0.2",
-        "eslint-plugin-promise":  "4.2.1",
-        "eslint-plugin-import":   "2.22.1",
+        "eslint":                 "8.12.0",
+        "eslint-config-standard": "17.0.0-1",
+        "eslint-plugin-promise":  "6.0.0",
+        "eslint-plugin-import":   "2.25.4",
         "eslint-plugin-node":     "11.1.0",
         "npm-run-all":            "4.1.5",
-        "pkg":                    "4.4.9",
-        "remark-cli":             "9.0.0",
-        "remark":                 "13.0.0",
-        "remark-man":             "7.0.0"
+        "pkg":                    "5.5.2",
+        "remark-cli":             "10.0.1",
+        "remark":                 "14.0.2",
+        "remark-man":             "8.0.1"
     },
     "dependencies" : {
-        "yargs":                  "16.2.0",
+        "yargs":                  "17.4.0",
         "deepmerge":              "4.2.2",
         "secure-random":          "1.1.2"
     },
     "engines": {
-        "node":                   ">=10.0.0"
+        "node":                   ">=14.0.0"
     },
     "scripts": {
         "prepublishOnly":         "npm-run-all -s lint",
