@@ -43,6 +43,7 @@ const yargs   = require("yargs")
             "dot-notation":              false,
             "halt-at-non-option":        true
         })
+        .version(false)
         .usage("Usage: vpg " +
             "[-h|--help] " +
             "[-V|--version] " +
@@ -80,7 +81,6 @@ const yargs   = require("yargs")
             describe: "total number of passwords to generate",
             alias:    "count", type: "number", nargs: 1, default: 1
         })
-        .version(false)
         .strict(true)
         .showHelpOnFail(true)
         .demand(0)
