@@ -69,7 +69,7 @@ $ vpg -c 5 -l 10 -d binary:01 -i binary
 License
 -------
 
-Copyright &copy; 2020-2022 Dr. Ralf S. Engelschall (http://engelschall.com/)
+Copyright &copy; 2020-2024 Dr. Ralf S. Engelschall (http://engelschall.com/)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
