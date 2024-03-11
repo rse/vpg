@@ -38,9 +38,9 @@ clean: bootstrap
 
 distclean: bootstrap
 
-VERSION_NODE        = 16
+VERSION_NODE        = 20
 VERSION_NODE_ALPINE = $(VERSION_NODE)-alpine
-VERSION_NODE_DEBIAN = $(VERSION_NODE)-bullseye
+VERSION_NODE_DEBIAN = $(VERSION_NODE)-bookworm
 VERSION_PKG_ALPINE  = node$(VERSION_NODE)-alpine-x64
 VERSION_PKG_DEBIAN  = node$(VERSION_NODE)-linux-x64
 
@@ -56,11 +56,15 @@ package-alpine:
 	docker run -it --rm -v $$HOME:$$HOME -e TERM -e HOME --name pkg-alpine node:$(VERSION_NODE_ALPINE) \
 		sh -c "apk -q update && \
 	        apk -q add --no-progress bash sudo shadow && \
+	        echo 'UID_MAX 50000' >>/etc/login.defs && \
 	        groupadd -g $(GID) $(GRP) && \
             useradd -M -d $$HOME -s /bin/bash -u $(UID) -g $(GID) -G wheel $(USR) && \
 	        echo 'Set disable_coredump false' >>/etc/sudo.conf && \
 	        cd $$PWD && \
-	        sudo -u $(USR) -g $(GRP) npx pkg -t $(VERSION_PKG_ALPINE) ." && \
+	        npm config -L project set script-shell=/bin/bash && \
+	        npm config -L project set shell=/bin/bash && \
+	        sudo -u $(USR) -g $(GRP) npx pkg -t $(VERSION_PKG_ALPINE) . && \
+	        rm -f .npmrc" && \
 	tar -c -f- vpg vpg.1 vpg.3 | xz -9 >vpg-linux-alpine-x64.tar.xz && rm -f vpg
 
 package-debian:
@@ -68,9 +72,14 @@ package-debian:
 	docker run -it --rm -v $$HOME:$$HOME -e TERM -e HOME --name pkg-debian node:$(VERSION_NODE_DEBIAN) \
 		sh -c "apt-get -q update -q && \
 	        apt-get -q install -q -y bash sudo >/dev/null 2>&1 && \
+	        echo 'UID_MAX 50000' >>/etc/login.defs && \
 	        groupadd -g $(GID) $(GRP) && \
             useradd -M -d $$HOME -s /bin/bash -u $(UID) -g $(GID) -G root $(USR) && \
+	        echo 'Set disable_coredump false' >>/etc/sudo.conf && \
 	        cd $$PWD && \
-	        sudo -u $(USR) -g $(GRP) npx pkg -t $(VERSION_PKG_DEBIAN) ." && \
+	        npm config -L project set script-shell=/bin/bash && \
+	        npm config -L project set shell=/bin/bash && \
+	        sudo -u $(USR) -g $(GRP) npx pkg -t $(VERSION_PKG_DEBIAN) . && \
+	        rm -f .npmrc" && \
 	tar -c -f- vpg vpg.1 vpg.3 | xz -9 >vpg-linux-debian-x64.tar.xz && rm -f vpg
 
